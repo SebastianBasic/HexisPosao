@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainController extends AbstractController
+#[Route('romobil', name: 'romobil.')]
+
+class RomobilController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/', name: 'view')]
     public function index(): Response
     {
-        return $this->render('home.html.twig');
+        return $this->render('romobil/index.html.twig');
     }
 }
