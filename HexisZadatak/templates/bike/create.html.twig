@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <h3 style="text-align: center">Upišite bicikl</h3>
+
+    <div class="row" style="margin: 10px">
+      <button class="btn btn-success"><a href="{{path('bicikl.view')}}">Natrag</a></button>
+    </div>
+
+    {{form(form)}}
+  </div>
+{% endblock %}

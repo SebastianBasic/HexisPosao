@@ -2,4 +2,42 @@
 
 {% block body %}
   <h1 style="text-align: center">Evidencija bicikala</h1>
+
+  <div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row" style="margin: 10px">
+        <button class="btn btn-success"><a href="{{path('bicikl.create')}}">Unos novog vozila</a></button>
+      </div>
+    </div>
+  </div>
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {% endfor %}
+
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Tip</td>
+          <td>Broj putnika</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bike in bikes %}
+          <tr>
+            <td>{{bike.tip}}</td>
+            <td>{{bike.brojPutnika}}</td>
+            <td><a href="{{path('bicikl.update', {id: bike.id})}}">uredi</a></td>
+            <td><a href="{{path('bicikl.delete', {id: bike.id})}}">obriši</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+
+    <button class="btn btn-success"><a href="{{path('home')}}">Natrag</a></button>
+  </div>
 {% endblock %}
