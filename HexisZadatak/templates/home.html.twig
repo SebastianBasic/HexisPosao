@@ -1,5 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  Home page
+
+<h1 style="text-align: center">Iznajmljivanje vozila</h1>
+
+  <div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row" style="margin: 10px">
+        <button class="btn btn-success"><a href="{{path('bicikl.view')}}">Evidencija bicikala</a></button>
+      </div>
+      <div class="row" style="margin: 10px">
+        <button class="btn btn-success"><a href="{{path('romobil.view')}}">Evidencija romobila</a></button>
+      </div>
+      <div class="row" style="margin: 10px">
+        <button class="btn btn-success"><a href="{{path('marka.view')}}">Evidencija marki</a></button>
+      </div>
+      <div class="row" style="margin: 10px">
+        <button class="btn btn-success"><a href="{{path('zauzece.view')}}">Evidencija zauzeća</a></button>
+      </div>
+    </div>
+  </div>
+  </div>
 {% endblock %}
