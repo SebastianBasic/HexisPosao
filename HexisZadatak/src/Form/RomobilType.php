@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Marka;
 
 class RomobilType extends AbstractType
 {
@@ -15,6 +17,9 @@ class RomobilType extends AbstractType
         $builder
             ->add('tip')
             ->add('brojPutnika')
+            ->add('marka', EntityType::class, [
+              'class' => Marka::class
+            ])
             ->add('Save', SubmitType::class)
         ;
     }

@@ -29,9 +29,15 @@ class Marka
      */
     private $bicikl;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Romobil", mappedBy="marka")
+     */
+    private $romobil;
+
     public function __construct()
     {
         $this->bicikl = new ArrayCollection();
+        $this->romobil = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,5 +90,35 @@ class Marka
     public function __toString()
     {
       return $this->naziv;
+    }
+
+    /**
+     * @return Collection|Romobil[]
+     */
+    public function getRomobil(): Collection
+    {
+        return $this->romobil;
+    }
+
+    public function addRomobil(Romobil $romobil): self
+    {
+        if (!$this->romobil->contains($romobil)) {
+            $this->romobil[] = $romobil;
+            $romobil->setMarka($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRomobil(Romobil $romobil): self
+    {
+        if ($this->romobil->removeElement($romobil)) {
+            // set the owning side to null (unless already changed)
+            if ($romobil->getMarka() === $this) {
+                $romobil->setMarka(null);
+            }
+        }
+
+        return $this;
     }
 }

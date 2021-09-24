@@ -23,6 +23,7 @@
         <tr>
           <td>Tip</td>
           <td>Broj putnika</td>
+          <td>Marka</td>
           <td>Action</td>
         </tr>
       </thead>
@@ -31,6 +32,7 @@
           <tr>
             <td>{{romobil.tip}}</td>
             <td>{{romobil.brojPutnika}}</td>
+            <td>{{romobil.marka}}</td>
             <td><a href="{{path('romobil.update', {id: romobil.id})}}">uredi</a></td>
             <td><a href="{{path('romobil.delete', {id: romobil.id})}}">obriši</a></td>
           </tr>
