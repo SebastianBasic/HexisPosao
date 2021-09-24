@@ -27,6 +27,11 @@ class Bicikl
      */
     private $brojPutnika;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Marka", inversedBy="bicikl")
+     */
+    private $marka;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Bicikl
     public function setBrojPutnika(int $brojPutnika): self
     {
         $this->brojPutnika = $brojPutnika;
+
+        return $this;
+    }
+
+    public function getMarka(): ?Marka
+    {
+        return $this->marka;
+    }
+
+    public function setMarka(?Marka $marka): self
+    {
+        $this->marka = $marka;
 
         return $this;
     }

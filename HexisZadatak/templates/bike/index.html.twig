@@ -23,6 +23,7 @@
         <tr>
           <td>Tip</td>
           <td>Broj putnika</td>
+          <td>Marka</td>
           <td>Action</td>
         </tr>
       </thead>
@@ -31,6 +32,7 @@
           <tr>
             <td>{{bike.tip}}</td>
             <td>{{bike.brojPutnika}}</td>
+            <td>{{bike.marka}}</td>
             <td><a href="{{path('bicikl.update', {id: bike.id})}}">uredi</a></td>
             <td><a href="{{path('bicikl.delete', {id: bike.id})}}">obriši</a></td>
           </tr>
