@@ -18,9 +18,19 @@ class Zauzece
     private $id;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datumZauzeca;
+
+    /**
      * @ORM\Column(type="dateinterval")
      */
     private $period;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $datumIsteka;
 
     public function getId(): ?int
     {
@@ -35,6 +45,30 @@ class Zauzece
     public function setPeriod(\DateInterval $period): self
     {
         $this->period = $period;
+
+        return $this;
+    }
+
+    public function getDatumZauzeca(): ?\DateTimeInterface
+    {
+        return $this->datumZauzeca;
+    }
+
+    public function setDatumZauzeca(\DateTimeInterface $datumZauzeca): self
+    {
+        $this->datumZauzeca = $datumZauzeca;
+
+        return $this;
+    }
+
+    public function getDatumIsteka(): ?\DateTimeInterface
+    {
+        return $this->datumIsteka;
+    }
+
+    public function setDatumIsteka(\DateTimeInterface $datumIsteka): self
+    {
+        $this->datumIsteka = $datumIsteka;
 
         return $this;
     }

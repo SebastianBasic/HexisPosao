@@ -37,6 +37,9 @@ class ZauzeceController extends AbstractController
         if($form->isSubmitted()){
           $em = $this->getDoctrine()->getManager();
 
+          $zauzece->setDatumZauzeca(new \DateTime());
+          $zauzece->setDatumIsteka((new \DateTime())->add($zauzece->getPeriod()));
+
           $em->persist($zauzece);
           $em->flush();
 
