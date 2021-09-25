@@ -20,7 +20,12 @@ class RomobilType extends AbstractType
             ->add('marka', EntityType::class, [
               'class' => Marka::class
             ])
-            ->add('Save', SubmitType::class)
+            ->add('Spremi', SubmitType::class, [
+              'attr' => [
+                'class' => 'btn btn-success',
+                'style' => 'margin-top: 10px; width: 100%'
+              ]
+            ])
         ;
     }
 

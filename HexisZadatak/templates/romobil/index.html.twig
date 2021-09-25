@@ -4,16 +4,14 @@
   <h1 style="text-align: center">Evidencija romobila</h1>
 
   <div class="container">
-  <div class="card">
-    <div class="card-body">
+    <div style="width:500px; margin:auto; margin-top: 30px">
       <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('romobil.create')}}">Unos novog vozila</a></button>
+        <a class="btn btn-success" href="{{path('romobil.create')}}">Unos novog vozila</a>
       </div>
       <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('zauzece.view')}}">Zauzimanje vozila</a></button>
+        <a class="btn btn-success" href="{{path('zauzece.view')}}">Zauzimanje vozila</a>
       </div>
     </div>
-  </div>
 
   {% for message in app.flashes('success') %}
     <div class="alert alert-success">
@@ -44,13 +42,15 @@
                 Slobodan
               {% endif %}
             </td>
-            <td><a href="{{path('romobil.update', {id: romobil.id})}}">uredi</a></td>
-            <td><a href="{{path('romobil.delete', {id: romobil.id})}}">obriši</a></td>
+            <td>
+              <a class="btn btn-warning" href="{{path('romobil.update', {id: romobil.id})}}"><i class="fa fa-edit"></i> Uredi</a>
+              <a class="btn btn-danger" href="{{path('romobil.delete', {id: romobil.id})}}"><i class="fa fa-delete"></i> Obriši</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
   </table>
 
-    <button class="btn btn-success"><a href="{{path('home')}}">Natrag</a></button>
+    <a class="btn btn-success" href="{{path('home')}}">Natrag</a>
   </div>
 {% endblock %}

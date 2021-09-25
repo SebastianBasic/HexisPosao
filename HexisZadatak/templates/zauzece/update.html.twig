@@ -2,12 +2,12 @@
 
 {% block body %}
   <div class="container">
-    <h3 style="text-align: center">Uredite zauzeće</h3>
+    <h1 style="text-align: center">Uredite zauzeće romobila</h1>
 
-    <div class="row" style="margin: 10px">
-      <button class="btn btn-success"><a href="{{path('zauzece.view')}}">Natrag</a></button>
+    <div style="width:500px; margin:auto; margin-top: 30px">
+      {{form(form)}}
     </div>
 
-    {{form(form)}}
+    <a class="btn btn-success" href="{{path('zauzece.view')}}">Natrag</a>
   </div>
 {% endblock %}

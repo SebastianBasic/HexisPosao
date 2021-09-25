@@ -14,7 +14,12 @@ class MarkaType extends AbstractType
     {
         $builder
             ->add('naziv')
-            ->add('save', SubmitType::class)
+            ->add('Spremi', SubmitType::class, [
+              'attr' => [
+                'class' => 'btn btn-success',
+                'style' => 'margin-top: 10px; width: 100%'
+              ]
+            ])
         ;
     }
 

@@ -55,7 +55,7 @@ class ZauzeceBiciklaController extends AbstractController
         ]);
   }
   #[Route('/{id}/update', name: 'update')]
-    public function update(ZauzeceBcikla $zauzece, Request $req, $id)
+    public function update(ZauzeceBicikla $zauzece, Request $req, $id)
     {
       $form = $this->createForm(ZauzeceBiciklaType::class, $zauzece);
       $form->handleRequest($req);

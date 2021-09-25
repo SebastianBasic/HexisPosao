@@ -24,7 +24,12 @@ class ZauzeceBiciklaType extends AbstractType
           ->add('bicikl', EntityType::class, [
             'class' => Bicikl::class
           ])
-          ->add('save', SubmitType::class)
+          ->add('Spremi', SubmitType::class, [
+            'attr' => [
+              'class' => 'btn btn-success',
+              'style' => 'margin-top: 10px; width: 100%'
+            ]
+          ])
         ;
     }
 

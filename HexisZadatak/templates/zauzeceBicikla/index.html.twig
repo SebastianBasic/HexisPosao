@@ -4,13 +4,11 @@
   <h1 style="text-align: center">Evidencija zauzeća bicikala</h1>
 
   <div class="container">
-  <div class="card">
-    <div class="card-body">
-      <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('zauzeceBicikla.create')}}">Unos novog zauzeća</a></button>
+      <div style="width:500px; margin:auto; margin-top: 30px">
+        <div class="row" style="margin: 10px">
+          <a class="btn btn-success" href="{{path('zauzeceBicikla.create')}}">Unos novog zauzeća</a>
+        </div>
       </div>
-    </div>
-  </div>
 
   {% for message in app.flashes('success') %}
     <div class="alert alert-success">
@@ -35,13 +33,15 @@
             <td>{{zauzece.period.format('%d days')}}</td>
             <td>{{zauzece.datumIsteka.format('d/m/Y')}}</td>
             <td>{{zauzece.bicikl}}</td>
-            <td><a href="{{path('zauzeceBicikla.update', {id: zauzece.id})}}">uredi</a></td>
-            <td><a href="{{path('zauzeceBicikla.delete', {id: zauzece.id})}}">obriši</a></td>
+            <td>
+                <a class="btn btn-danger" href="{{path('zauzeceBicikla.update', {id: zauzece.id})}}"><i class="fa fa-edit"></i> Uredi</a>
+                <a class="btn btn-warning" href="{{path('zauzeceBicikla.delete', {id: zauzece.id})}}"><i class="fa fa-trash"></i> Obriši</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
   </table>
 
-    <button class="btn btn-success"><a href="{{path('bicikl.view')}}">Natrag</a></button>
+    <a class="btn btn-success" href="{{path('bicikl.view')}}">Natrag</a>
   </div>
 {% endblock %}

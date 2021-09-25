@@ -4,15 +4,13 @@
   <h1 style="text-align: center">Evidencija bicikala</h1>
 
   <div class="container">
-  <div class="card">
-    <div class="card-body">
+    <div style="width:500px; margin:auto; margin-top: 30px">
       <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('bicikl.create')}}">Unos novog vozila</a></button>
+        <a class="btn btn-success" href="{{path('bicikl.create')}}">Unos novog vozila</a>
       </div>
       <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('zauzeceBicikla.view')}}">Zauzimanje vozila</a></button>
+        <a class="btn btn-success" href="{{path('zauzeceBicikla.view')}}">Zauzimanje vozila</a>
       </div>
-    </div>
   </div>
 
   {% for message in app.flashes('success') %}
@@ -44,13 +42,15 @@
                 Slobodan
               {% endif %}
             </td>
-            <td><a href="{{path('bicikl.update', {id: bike.id})}}">uredi</a></td>
-            <td><a href="{{path('bicikl.delete', {id: bike.id})}}">obriši</a></td>
+            <td>
+              <a class="btn btn-warning" href="{{path('bicikl.update', {id: bike.id})}}"><i class="fa fa-edit"></i> Uredi</a>
+              <a class="btn btn-danger" href="{{path('bicikl.delete', {id: bike.id})}}"><i class="fa fa-trash"></i> Obriši</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
   </table>
 
-    <button class="btn btn-success"><a href="{{path('home')}}">Natrag</a></button>
+    <a class="btn btn-success" href="{{path('home')}}">Natrag</a>
   </div>
 {% endblock %}
