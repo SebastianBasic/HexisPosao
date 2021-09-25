@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RomobilRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class Romobil
      * @ORM\ManyToOne(targetEntity="App\Entity\Marka", inversedBy="romobil")
      */
     private $marka;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Zauzece", mappedBy="romobil")
+     */
+    private $zauzece;
+
+    public function __construct()
+    {
+        $this->zauzece = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -71,5 +83,40 @@ class Romobil
         $this->marka = $marka;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Zauzece[]
+     */
+    public function getZauzece(): Collection
+    {
+        return $this->zauzece;
+    }
+
+    public function addZauzece(Zauzece $zauzece): self
+    {
+        if (!$this->zauzece->contains($zauzece)) {
+            $this->zauzece[] = $zauzece;
+            $zauzece->setRomobil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZauzece(Zauzece $zauzece): self
+    {
+        if ($this->zauzece->removeElement($zauzece)) {
+            // set the owning side to null (unless already changed)
+            if ($zauzece->getRomobil() === $this) {
+                $zauzece->setRomobil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+      return $this->tip;
     }
 }

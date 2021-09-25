@@ -32,6 +32,11 @@ class Zauzece
      */
     private $datumIsteka;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Romobil", inversedBy="zauzece")
+     */
+    private $romobil;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Zauzece
     public function setDatumIsteka(\DateTimeInterface $datumIsteka): self
     {
         $this->datumIsteka = $datumIsteka;
+
+        return $this;
+    }
+
+    public function getRomobil(): ?Romobil
+    {
+        return $this->romobil;
+    }
+
+    public function setRomobil(?Romobil $romobil): self
+    {
+        $this->romobil = $romobil;
 
         return $this;
     }

@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateIntervalType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Romobil;
 
 class ZauzeceType extends AbstractType
 {
@@ -18,6 +20,9 @@ class ZauzeceType extends AbstractType
               'with_years' => false,
               'with_months' => false,
               'days' => array_combine(range(1, 365), range(1, 365))
+            ])
+            ->add('romobil', EntityType::class, [
+              'class' => Romobil::class
             ])
             ->add('save', SubmitType::class)
         ;
