@@ -25,11 +25,7 @@ class RomobilController extends AbstractController
           if($zauzece->getDatumIsteka() <= (new \DateTime())){
             $romobil->setStatus(false);
           }
-          else{
-          }
         }
-
-        //if($zauzece->getDatumIsteka() <= (new \DateTime()));
       }
 
       return $this->render('romobil/index.html.twig', [

@@ -19,6 +19,15 @@ class BikeController extends AbstractController
   {
       $bikes = $repo->findAll();
 
+      foreach ($bikes as $bike) {
+        $zauzeca = $bike->getZauzece();
+        foreach ($zauzeca as $zauzece) {
+          if($zauzece->getDatumIsteka() <= (new \DateTime())){
+            $bike->setStatus(false);
+          }
+        }
+      }
+
       return $this->render('bike/index.html.twig', [
         'bikes' => $bikes
       ]);
@@ -35,6 +44,8 @@ class BikeController extends AbstractController
 
         if($form->isSubmitted()){
           $em = $this->getDoctrine()->getManager();
+
+          $bike->setStatus(false);
 
           $em->persist($bike);
           $em->flush();
@@ -73,6 +84,12 @@ class BikeController extends AbstractController
     public function destroy(Bicikl $bike)
     {
       $em = $this->getDoctrine()->getManager();
+
+      $zauzeca = $bike->getZauzece();
+
+      foreach ($zauzeca as $zauzece) {
+        $em->remove($zauzece);
+      }
 
       $em->remove($bike);
 

@@ -35,7 +35,7 @@ class Bicikl
     private $marka;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ZauzeceBicikla", mappedBy="romobil")
+     * @ORM\OneToMany(targetEntity="App\Entity\ZauzeceBicikla", mappedBy="bicikl")
      */
     private $zauzece;
 
@@ -102,7 +102,7 @@ class Bicikl
     {
         if (!$this->zauzece->contains($zauzece)) {
             $this->zauzece[] = $zauzece;
-            $zauzece->setRomobil($this);
+            $zauzece->setBicikl($this);
         }
 
         return $this;
@@ -112,8 +112,8 @@ class Bicikl
     {
         if ($this->zauzece->removeElement($zauzece)) {
             // set the owning side to null (unless already changed)
-            if ($zauzece->getRomobil() === $this) {
-                $zauzece->setRomobil(null);
+            if ($zauzece->getBicikl() === $this) {
+                $zauzece->setBicikl(null);
             }
         }
 

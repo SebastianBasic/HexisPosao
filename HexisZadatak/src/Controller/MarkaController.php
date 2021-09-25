@@ -76,7 +76,7 @@ class MarkaController extends AbstractController
 
       $romobili = $marka->getRomobil();
       $bicikli = $marka->getBicikl();
-
+ 
       foreach ($romobili as $romobil) {
         $em->remove($romobil);
       }
