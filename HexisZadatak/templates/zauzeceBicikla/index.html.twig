@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1 style="text-align: center">Evidencija zauzeća romobila</h1>
+  <h1 style="text-align: center">Evidencija zauzeća bicikala</h1>
 
   <div class="container">
   <div class="card">
     <div class="card-body">
       <div class="row" style="margin: 10px">
-        <button class="btn btn-success"><a href="{{path('zauzece.create')}}">Unos novog zauzeća</a></button>
+        <button class="btn btn-success"><a href="{{path('zauzeceBicikla.create')}}">Unos novog zauzeća</a></button>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
           <td>Datum zauzeća</td>
           <td>Period</td>
           <td>Datum isteka zauzeća</td>
-          <td>Romobil</td>
+          <td>Bicikl</td>
           <td>Action</td>
         </tr>
       </thead>
@@ -34,14 +34,14 @@
             <td>{{zauzece.datumZauzeca.format('d/m/Y')}}</td>
             <td>{{zauzece.period.format('%d days')}}</td>
             <td>{{zauzece.datumIsteka.format('d/m/Y')}}</td>
-            <td>{{zauzece.romobil}}</td>
-            <td><a href="{{path('zauzece.update', {id: zauzece.id})}}">uredi</a></td>
-            <td><a href="{{path('zauzece.delete', {id: zauzece.id})}}">obriši</a></td>
+            <td>{{zauzece.bicikl}}</td>
+            <td><a href="{{path('zauzeceBicikla.update', {id: zauzece.id})}}">uredi</a></td>
+            <td><a href="{{path('zauzeceBicikla.delete', {id: zauzece.id})}}">obriši</a></td>
           </tr>
         {% endfor %}
       </tbody>
   </table>
 
-    <button class="btn btn-success"><a href="{{path('romobil.view')}}">Natrag</a></button>
+    <button class="btn btn-success"><a href="{{path('bicikl.view')}}">Natrag</a></button>
   </div>
 {% endblock %}

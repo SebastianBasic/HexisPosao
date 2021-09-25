@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BiciklRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,21 @@ class Bicikl
      * @ORM\ManyToOne(targetEntity="App\Entity\Marka", inversedBy="bicikl")
      */
     private $marka;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ZauzeceBicikla", mappedBy="romobil")
+     */
+    private $zauzece;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
+    public function __construct()
+    {
+        $this->zauzece = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +86,53 @@ class Bicikl
     public function setMarka(?Marka $marka): self
     {
         $this->marka = $marka;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ZauzeceBicikla[]
+     */
+    public function getZauzece(): Collection
+    {
+        return $this->zauzece;
+    }
+
+    public function addZauzece(ZauzeceBicikla $zauzece): self
+    {
+        if (!$this->zauzece->contains($zauzece)) {
+            $this->zauzece[] = $zauzece;
+            $zauzece->setRomobil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZauzece(ZauzeceBicikla $zauzece): self
+    {
+        if ($this->zauzece->removeElement($zauzece)) {
+            // set the owning side to null (unless already changed)
+            if ($zauzece->getRomobil() === $this) {
+                $zauzece->setRomobil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+      return $this->tip;
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
