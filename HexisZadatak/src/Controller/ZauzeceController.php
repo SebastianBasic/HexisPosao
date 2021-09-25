@@ -40,6 +40,8 @@ class ZauzeceController extends AbstractController
           $zauzece->setDatumZauzeca(new \DateTime());
           $zauzece->setDatumIsteka((new \DateTime())->add($zauzece->getPeriod()));
 
+          $this->provjeriDatumIsteka($zauzece);
+
           $em->persist($zauzece);
           $em->flush();
 
@@ -60,6 +62,9 @@ class ZauzeceController extends AbstractController
 
       if($form->isSubmitted()){
         $em = $this->getDoctrine()->getManager();
+
+        $this->provjeriDatumIsteka($zauzece);
+
         $em->persist($zauzece);
         $em->flush();
 
@@ -78,6 +83,10 @@ class ZauzeceController extends AbstractController
     {
       $em = $this->getDoctrine()->getManager();
 
+      $romobil = $zauzece->getRomobil();
+
+      $romobil->setStatus(false);
+
       $em->remove($zauzece);
 
       $em->flush();
@@ -86,4 +95,25 @@ class ZauzeceController extends AbstractController
 
       return $this->redirect($this->generateUrl('zauzece.view'));
     }
+
+  #Moje metode:
+  private function provjeriDatumIsteka(Zauzece $zauzece)
+  {
+    $em = $this->getDoctrine()->getManager();
+
+    if($zauzece->getDatumIsteka() <= (new \DateTime())){
+      $romobil = $zauzece->getRomobil();
+
+      $romobil->setStatus(false);
+
+      $em->persist($romobil);
+    }
+    else{
+      $romobil = $zauzece->getRomobil();
+
+      $romobil->setStatus(true);
+
+      $em->persist($romobil);
+    }
+  }
 }

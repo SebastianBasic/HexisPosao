@@ -30,6 +30,11 @@ class Romobil
     private $brojPutnika;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $status;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Marka", inversedBy="romobil")
      */
     private $marka;
@@ -118,5 +123,17 @@ class Romobil
     public function __toString()
     {
       return $this->tip;
+    }
+
+    public function getStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

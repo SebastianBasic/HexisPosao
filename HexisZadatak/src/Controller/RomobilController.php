@@ -19,6 +19,19 @@ class RomobilController extends AbstractController
   {
       $romobili = $repo->findAll();
 
+      foreach ($romobili as $romobil) {
+        $zauzeca = $romobil->getZauzece();
+        foreach ($zauzeca as $zauzece) {
+          if($zauzece->getDatumIsteka() <= (new \DateTime())){
+            $romobil->setStatus(false);
+          }
+          else{
+          }
+        }
+
+        //if($zauzece->getDatumIsteka() <= (new \DateTime()));
+      }
+
       return $this->render('romobil/index.html.twig', [
         'romobili' => $romobili
       ]);
@@ -35,6 +48,8 @@ class RomobilController extends AbstractController
 
         if($form->isSubmitted()){
           $em = $this->getDoctrine()->getManager();
+
+          $romobil->setStatus(false);
 
           $em->persist($romobil);
           $em->flush();
@@ -73,6 +88,12 @@ class RomobilController extends AbstractController
     public function destroy(Romobil $romobil)
     {
       $em = $this->getDoctrine()->getManager();
+
+      $zauzeca = $romobil->getZauzece();
+
+      foreach ($zauzeca as $zauzece) {
+        $em->remove($zauzece);
+      }
 
       $em->remove($romobil);
 
