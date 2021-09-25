@@ -34,8 +34,8 @@
             <td>{{zauzece.datumIsteka.format('d/m/Y')}}</td>
             <td>{{zauzece.bicikl}}</td>
             <td>
-                <a class="btn btn-danger" href="{{path('zauzeceBicikla.update', {id: zauzece.id})}}"><i class="fa fa-edit"></i> Uredi</a>
-                <a class="btn btn-warning" href="{{path('zauzeceBicikla.delete', {id: zauzece.id})}}"><i class="fa fa-trash"></i> Obriši</a>
+                <a class="btn btn-warning" href="{{path('zauzeceBicikla.update', {id: zauzece.id})}}"><i class="fa fa-edit"></i> Uredi</a>
+                <a class="btn btn-danger" href="{{path('zauzeceBicikla.delete', {id: zauzece.id})}}"><i class="fa fa-trash"></i> Obriši</a>
             </td>
           </tr>
         {% endfor %}
