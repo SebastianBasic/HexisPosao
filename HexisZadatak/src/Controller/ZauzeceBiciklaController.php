@@ -63,6 +63,8 @@ class ZauzeceBiciklaController extends AbstractController
       if($form->isSubmitted()){
         $em = $this->getDoctrine()->getManager();
 
+        $zauzece->setDatumIsteka((new \DateTime())->add($zauzece->getPeriod()));
+
         $this->provjeriDatumIsteka($zauzece);
 
         $em->persist($zauzece);
