@@ -10,6 +10,7 @@ use App\Entity\Marka;
 use App\Repository\MarkaRepository;
 use App\Form\MarkaType;
 
+
 #[Route('marka', name: 'marka.')]
 
 class MarkaController extends AbstractController
@@ -76,12 +77,25 @@ class MarkaController extends AbstractController
 
       $romobili = $marka->getRomobil();
       $bicikli = $marka->getBicikl();
- 
+
       foreach ($romobili as $romobil) {
+        $zauzeca = $romobil->getZauzece();
+
+        foreach ($zauzeca as $zauzece) {
+          $em->remove($zauzece);
+        }
+
+        $em->remove($zauzece);
         $em->remove($romobil);
       }
 
       foreach ($bicikli as $bicikl) {
+        $zauzeca = $bicikl->getZauzece();
+
+        foreach ($zauzeca as $zauzece) {
+          $em->remove($zauzece);
+        }
+
         $em->remove($bicikl);
       }
 

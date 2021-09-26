@@ -18,7 +18,10 @@ class RomobilType extends AbstractType
             ->add('tip')
             ->add('brojPutnika')
             ->add('marka', EntityType::class, [
-              'class' => Marka::class
+              'class' => Marka::class,
+              'attr' => [
+                'required' => true
+              ]
             ])
             ->add('Spremi', SubmitType::class, [
               'attr' => [
