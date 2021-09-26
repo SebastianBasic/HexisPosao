@@ -22,6 +22,7 @@
   <table class="table table-striped">
       <thead>
         <tr>
+          <td>Sifra</td>
           <td>Tip</td>
           <td>Broj putnika</td>
           <td>Marka</td>
@@ -32,6 +33,7 @@
       <tbody>
         {% for romobil in romobili %}
           <tr>
+            <td>{{romobil.sifra}}</td>
             <td>{{romobil.tip}}</td>
             <td>{{romobil.brojPutnika}}</td>
             <td>{{romobil.marka}}</td>

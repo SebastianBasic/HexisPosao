@@ -22,6 +22,11 @@ class Romobil
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $sifra;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $tip;
 
     /**
@@ -122,7 +127,7 @@ class Romobil
 
     public function __toString()
     {
-      return $this->tip;
+      return $this->sifra . " /" . $this->tip;
     }
 
     public function getStatus(): ?bool
@@ -133,6 +138,18 @@ class Romobil
     public function setStatus(bool $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getSifra(): ?string
+    {
+        return $this->sifra;
+    }
+
+    public function setSifra(string $sifra): self
+    {
+        $this->sifra = $sifra;
 
         return $this;
     }

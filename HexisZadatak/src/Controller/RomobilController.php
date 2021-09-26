@@ -46,6 +46,7 @@ class RomobilController extends AbstractController
           $em = $this->getDoctrine()->getManager();
 
           $romobil->setStatus(false);
+          $romobil->setSifra(uniqid());
 
           $em->persist($romobil);
           $em->flush();
