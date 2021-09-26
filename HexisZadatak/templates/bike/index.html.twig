@@ -22,16 +22,18 @@
   <table class="table table-striped">
       <thead>
         <tr>
+          <td>Šifra</td>
           <td>Tip</td>
           <td>Broj putnika</td>
           <td>Marka</td>
           <td>Status</td>
-          <td>Action</td>
+          <td>Akcija</td>
         </tr>
       </thead>
       <tbody>
         {% for bike in bikes %}
           <tr>
+            <td>{{bike.sifra}}</td>
             <td>{{bike.tip}}</td>
             <td>{{bike.brojPutnika}}</td>
             <td>{{bike.marka}}</td>

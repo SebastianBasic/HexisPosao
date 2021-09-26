@@ -46,6 +46,7 @@ class BikeController extends AbstractController
           $em = $this->getDoctrine()->getManager();
 
           $bike->setStatus(false);
+          $bike->setSifra(uniqid());
 
           $em->persist($bike);
           $em->flush();
