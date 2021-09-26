@@ -35,6 +35,13 @@ class ZauzeceBiciklaController extends AbstractController
         $form->handleRequest($req);
 
         if($form->isSubmitted()){
+          if ($zauzece->getBicikl()->getStatus()) {
+
+            $this->addFlash('message', 'Ovaj bicikl je već zauzet! ODABERITE DRUGI BICIKL!');
+
+            return $this->redirect($this->generateUrl('zauzeceBicikla.create'));
+          }
+
           $em = $this->getDoctrine()->getManager();
 
           $zauzece->setDatumZauzeca(new \DateTime());
@@ -64,6 +71,13 @@ class ZauzeceBiciklaController extends AbstractController
       $form->handleRequest($req);
 
       if($form->isSubmitted()){
+        if ($zauzece->getBicikl()->getStatus()) {
+
+          $this->addFlash('message', 'Ovaj bicikl je već zauzet! ODABERITE DRUGI BICIKL!');
+
+          return $this->redirect($this->generateUrl('zauzeceBicikla.update', ['id' => $zauzece->getId()]));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $zauzece->setDatumIsteka((new \DateTime())->add($zauzece->getPeriod()));
