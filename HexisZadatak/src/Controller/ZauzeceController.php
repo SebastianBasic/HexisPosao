@@ -35,6 +35,13 @@ class ZauzeceController extends AbstractController
         $form->handleRequest($req);
 
         if($form->isSubmitted()){
+          if ($zauzece->getRomobil()->getStatus()) {
+
+            $this->addFlash('message', 'Ovaj romobil je već zauzet! ODABERITE DRUGI ROMOBIL!');
+
+            return $this->redirect($this->generateUrl('zauzece.create'));
+          }
+
           $em = $this->getDoctrine()->getManager();
 
           $zauzece->setDatumZauzeca(new \DateTime());
@@ -64,6 +71,13 @@ class ZauzeceController extends AbstractController
       $form->handleRequest($req);
 
       if($form->isSubmitted()){
+        if ($zauzece->getRomobil()->getStatus()) {
+
+          $this->addFlash('message', 'Ovaj romobil je već zauzet! ODABERITE DRUGI ROMOBIL!');
+
+          return $this->redirect($this->generateUrl('zauzece.update', ['id' => $zauzece->getId()]));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $zauzece->setDatumIsteka((new \DateTime())->add($zauzece->getPeriod()));
