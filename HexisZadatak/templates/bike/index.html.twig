@@ -39,9 +39,9 @@
             <td>{{bike.marka}}</td>
             <td>
               {% if bike.status == true %}
-                Zauzet
+                <span style="color: red">Zauzet</span>
               {% else %}
-                Slobodan
+                <span style="color: green">Slobodan</span>
               {% endif %}
             </td>
             <td>

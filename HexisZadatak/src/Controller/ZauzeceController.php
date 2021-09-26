@@ -57,6 +57,9 @@ class ZauzeceController extends AbstractController
   #[Route('/{id}/update', name: 'update')]
     public function update(Zauzece $zauzece, Request $req, $id)
     {
+      $stariRomobil = $zauzece->getRomobil();
+      $stariRomobil->setStatus(false);
+
       $form = $this->createForm(ZauzeceType::class, $zauzece);
       $form->handleRequest($req);
 

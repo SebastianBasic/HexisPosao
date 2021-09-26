@@ -57,6 +57,9 @@ class ZauzeceBiciklaController extends AbstractController
   #[Route('/{id}/update', name: 'update')]
     public function update(ZauzeceBicikla $zauzece, Request $req, $id)
     {
+      $stariBicikl = $zauzece->getBicikl();
+      $stariBicikl->setStatus(false);
+
       $form = $this->createForm(ZauzeceBiciklaType::class, $zauzece);
       $form->handleRequest($req);
 
@@ -68,6 +71,7 @@ class ZauzeceBiciklaController extends AbstractController
         $this->provjeriDatumIsteka($zauzece);
 
         $em->persist($zauzece);
+
         $em->flush();
 
         $this->addFlash('success', 'Zauzeće uspješno uređeno!');
